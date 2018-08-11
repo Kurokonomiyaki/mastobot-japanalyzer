@@ -114,7 +114,9 @@ var buildDescription = function () {
 }();
 
 var replyToToot = function () {
-  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(toot, replyTo, instance, settings) {
+  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref3, replyTo, instance, settings) {
+    var content = _ref3.content,
+        id = _ref3.id;
     var to, text;
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
@@ -127,7 +129,7 @@ var replyToToot = function () {
             }
 
             _context2.next = 4;
-            return (0, _tootparser.parseToot)(toot);
+            return (0, _tootparser.parseToot)(content);
 
           case 4:
             text = _context2.sent;
@@ -149,6 +151,7 @@ var replyToToot = function () {
             }
 
             instance.post('statuses', (0, _assign2.default)({
+              in_reply_to_id: id,
               status: text
             }, settings.tootOptions));
 
@@ -173,7 +176,7 @@ var onMessageReceived = function onMessageReceived(settings, instance, message) 
     var toot = data.status;
     var author = data.account;
 
-    replyToToot(toot.content, author.acct, instance, settings).then(function () {
+    replyToToot(toot, author.acct, instance, settings).then(function () {
       console.log('Reply sent', toot.content, author.acct);
     }).catch(function (err) {
       console.log('Error while replying to toot', toot.content, author.acct, err);

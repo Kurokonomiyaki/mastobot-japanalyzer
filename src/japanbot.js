@@ -41,13 +41,13 @@ const buildDescription = async (text) => {
   return output;
 };
 
-const replyToToot = async (toot, replyTo, instance, settings) => {
+const replyToToot = async ({ content, id }, replyTo, instance, settings) => {
   let to = replyTo;
   if (to.startsWith('@') === false) {
     to = `@${to}`;
   }
 
-  let text = await parseToot(toot);
+  let text = await parseToot(content);
   if (text.length > (settings.outputMaxChars / 15)) { // simple heuristic to avoid processing a too long request
     text = `${to} ${settings.tooMuchCharsMessage}`;
   }
@@ -59,6 +59,7 @@ const replyToToot = async (toot, replyTo, instance, settings) => {
   }
 
   instance.post('statuses', Object.assign({
+    in_reply_to_id: id,
     status: text,
   }, settings.tootOptions));
 };
@@ -69,7 +70,7 @@ const onMessageReceived = (settings, instance, message) => {
     const toot = data.status;
     const author = data.account;
 
-    replyToToot(toot.content, author.acct, instance, settings).then(() => {
+    replyToToot(toot, author.acct, instance, settings).then(() => {
       console.log('Reply sent', toot.content, author.acct);
     }).catch((err) => {
       console.log('Error while replying to toot', toot.content, author.acct, err);
