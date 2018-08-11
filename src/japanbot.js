@@ -70,6 +70,10 @@ const onMessageReceived = (settings, instance, message) => {
     const toot = data.status;
     const author = data.account;
 
+    if (toot.in_reply_to_id != null || toot.in_reply_to_account_id != null) {
+      return;
+    }
+
     replyToToot(toot, author.acct, instance, settings).then(() => {
       console.log('Reply sent', toot.content, author.acct);
     }).catch((err) => {

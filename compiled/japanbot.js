@@ -176,6 +176,10 @@ var onMessageReceived = function onMessageReceived(settings, instance, message) 
     var toot = data.status;
     var author = data.account;
 
+    if (toot.in_reply_to_id != null || toot.in_reply_to_account_id != null) {
+      return;
+    }
+
     replyToToot(toot, author.acct, instance, settings).then(function () {
       console.log('Reply sent', toot.content, author.acct);
     }).catch(function (err) {
