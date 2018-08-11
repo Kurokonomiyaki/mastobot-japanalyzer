@@ -1,6 +1,8 @@
 {
   "instanceUrl": "<your instance API url, e.g., https://my.instance/api/v1>",
   "accessToken": "<your access token>",
+  "outputMaxChars": 500,
+  "tooMuchCharsMessage": "Sorry, I can't answer in less than 500 chars :(\nPlease try with a shorter text.",
   "tootOptions": {
     "visibility": "public",
     "sensitive": false
