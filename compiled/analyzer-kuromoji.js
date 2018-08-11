@@ -44,6 +44,7 @@ var mappings = {
   '普通名詞': 'Common Noun',
   '固有名詞': 'Proper Noun',
   '助動詞語幹': 'AuxVerb stem',
+  'サ変接続': 'Verbal',
   'その他': 'Others',
   '接頭辞': 'Prefix',
   '助詞': 'Particle',
@@ -77,7 +78,7 @@ var mappings = {
 };
 
 var tokenizer = null;
-var builder = _kuromoji2.default.builder({ dicPath: './node_modules/kuromoji/dict' });
+var builder = _kuromoji2.default.builder({ dicPath: __dirname + '/../node_modules/kuromoji/dict' });
 
 var tokenize = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(sentence) {

@@ -20,6 +20,7 @@ const mappings = {
   '普通名詞': 'Common Noun',
   '固有名詞': 'Proper Noun',
   '助動詞語幹': 'AuxVerb stem',
+  'サ変接続': 'Verbal',
   'その他': 'Others',
   '接頭辞': 'Prefix',
   '助詞': 'Particle',
@@ -29,7 +30,7 @@ const mappings = {
   '係助詞': 'Binding',
   '接続助詞': 'Conjunctive',
   '終助詞': 'Phrase final',
-  '副助詞／並立助詞／終助詞':  'Adverbial/Coordinate/Sentence Final',
+  '副助詞／並立助詞／終助詞': 'Adverbial/Coordinate/Sentence Final',
   '接尾辞': 'Suffix',
   '形容詞的': 'Adjective',
   '形状詞的': 'Adjectival Noun',
@@ -46,14 +47,14 @@ const mappings = {
   '一般': 'Common',
   '五段': 'Group1',
   '一段': 'Group2',
-  'サ変・スル':  'Suru',
-  'カ変・来ル':  'Kuru',
-  '特殊・マス':  'Masu',
-  '特殊・デス':  'Desu',
+  'サ変・スル': 'Suru',
+  'カ変・来ル': 'Kuru',
+  '特殊・マス': 'Masu',
+  '特殊・デス': 'Desu',
 };
 
 const tokenizer = null;
-const builder = Kuromoji.builder({ dicPath: './node_modules/kuromoji/dict' });
+const builder = Kuromoji.builder({ dicPath: `${__dirname}/../node_modules/kuromoji/dict` });
 
 const tokenize = async (sentence) => {
   return new Promise((resolve, reject) => {
