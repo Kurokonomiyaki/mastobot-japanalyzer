@@ -13,10 +13,12 @@
     "babel-runtime": "6.26.0",
     "he": "1.1.1",
     "htmlparser": "1.7.7",
+    "kuromoji": "0.1.2",
     "mastodon-api": "1.3.0",
-    "underscore.string": "3.3.4",
+    "mastodon-api-token": "git+https://github.com/kurokonomiyaki/mastodon-api-token.git",
     "merge-options": "1.0.0",
-    "mastodon-api-token": "git+https://github.com/kurokonomiyaki/mastodon-api-token.git"
+    "rakutenma": "1.0.0",
+    "underscore.string": "3.3.4"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
